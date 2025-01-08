@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CafePulse.DataBaseClass\CafePulse.DataBaseClass.csproj" />
+    <ProjectReference Include="..\CafePulse.FrontClass\CafePulse.FrontClass.csproj" />
+    <ProjectReference Include="..\CafePulse.QA\CafePulse.QA.csproj" />
+  </ItemGroup>
+
 </Project>
