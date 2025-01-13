@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CafePulse.BusinessClass", "CafePulse.BusinessClass\CafePulse.BusinessClass.csproj", "{DB839AD2-1901-4CAB-8EAF-7918BB0A05DE}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CafePulse.DataBaseClass", "CafePulse.DataBaseClass\CafePulse.DataBaseClass.csproj", "{9EAF7234-001E-4834-A4CD-C03161CAD25F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CafePulse.ModelClass", "CafePulse.ModelClass\CafePulse.ModelClass.csproj", "{A87CAF75-D677-45F2-ABD3-8DE56CA7DC79}"
@@ -13,16 +11,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CafePulse.FrontClass", "Caf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CafePulse.QA", "CafePulse.QA\CafePulse.QA.csproj", "{6CEB1909-0316-4CBC-A33C-094EDCA77A23}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CafePulse.BusinessClass", "CafePulse.BusinessClass\CafePulse.BusinessClass.csproj", "{1824B0AB-FC9E-4233-9FB8-1EF96A5F4C05}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DB839AD2-1901-4CAB-8EAF-7918BB0A05DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DB839AD2-1901-4CAB-8EAF-7918BB0A05DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DB839AD2-1901-4CAB-8EAF-7918BB0A05DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DB839AD2-1901-4CAB-8EAF-7918BB0A05DE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9EAF7234-001E-4834-A4CD-C03161CAD25F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9EAF7234-001E-4834-A4CD-C03161CAD25F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EAF7234-001E-4834-A4CD-C03161CAD25F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{6CEB1909-0316-4CBC-A33C-094EDCA77A23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CEB1909-0316-4CBC-A33C-094EDCA77A23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CEB1909-0316-4CBC-A33C-094EDCA77A23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1824B0AB-FC9E-4233-9FB8-1EF96A5F4C05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1824B0AB-FC9E-4233-9FB8-1EF96A5F4C05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1824B0AB-FC9E-4233-9FB8-1EF96A5F4C05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1824B0AB-FC9E-4233-9FB8-1EF96A5F4C05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
