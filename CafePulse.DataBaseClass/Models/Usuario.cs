@@ -30,4 +30,13 @@ public partial class Usuario
     public virtual CatRol? IdrolNavigation { get; set; }
 
     public virtual ICollection<Pedido> Pedidos { get; set; } = new List<Pedido>();
+
+
+    #region
+    public string? Genero { get; set; }
+
+    public string? Rol { get; set; }
+    #endregion
+
+
 }

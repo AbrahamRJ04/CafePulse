@@ -19,4 +19,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CafePulse.DataBaseClass\CafePulse.DataBaseClass.csproj" />
+    <ProjectReference Include="..\CafePulse.ModelClass\CafePulse.ModelClass.csproj" />
+  </ItemGroup>
+
 </Project>
