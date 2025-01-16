@@ -23,8 +23,6 @@ public partial class Usuario
 
     public string? Usuario1 { get; set; }
 
-    public byte[]? Contrasenahash { get; set; }
-
     public virtual CatGenero? IdgeneroNavigation { get; set; }
 
     public virtual CatRol? IdrolNavigation { get; set; }

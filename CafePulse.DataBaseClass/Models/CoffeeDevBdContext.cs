@@ -224,7 +224,7 @@ public partial class CoffeeDevBdContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("APELLIDO");
-            entity.Property(e => e.Contrasenahash).HasColumnName("CONTRASENAHASH");
+            //entity.Property(e => e.Contrasenahash).HasColumnName("CONTRASENAHASH");
             entity.Property(e => e.Email)
                 .HasMaxLength(50)
                 .IsUnicode(false)

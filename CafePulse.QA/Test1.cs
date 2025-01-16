@@ -17,5 +17,15 @@
             CafePulse.ModelClass.Result response = CafePulse.BusinessClass.Rol.GetAll();
             Assert.IsTrue(response.Success);
         }
+        
+        [TestMethod]
+        public void TesLoginSP()
+        {
+            string Usuario = "reyesoa";
+            string Contrasena = "WELCOME001";
+
+            CafePulse.ModelClass.Result response = CafePulse.BusinessClass.Usuario.GetAuthenticationLog(Usuario,Contrasena);
+            Assert.IsTrue(response.Success);
+        }
     }
 }
