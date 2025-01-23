@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CafePulse.BusinessClass\CafePulse.BusinessClass.csproj" />
     <ProjectReference Include="..\CafePulse.ModelClass\CafePulse.ModelClass.csproj" />
   </ItemGroup>
 
