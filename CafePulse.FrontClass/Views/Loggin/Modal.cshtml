@@ -1,29 +1,60 @@
 ﻿@{
     Layout = null;
 }
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="http://bootboxjs.com/bootbox.js"></script>
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-<div class="modal" tabindex="-1" role="dialog" id="modalValidacion">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content text-center">
-            <div class="modal-header">
-                <h4 class="modal-title">Aviso</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h5 style="color: green;">@ViewBag.Mensaje</h5>
-            </div>
-            <div class="modal-footer">
-                @Html.ActionLink("Regresar", "Login", "Loggin", htmlAttributes: new { @class = "btn btn-success", style = "background-color: white; color: green;" })
-            </div>
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dialog Example</title>
+    <!-- Referencia al archivo CSS externo -->
+    <link href="c:\proeyctos temporales\cafeteria\code\cafepulse\cafepulse.frontclass\wwwroot\css\StyleSheetModal.css" rel="stylesheet" />
+    <link href="~/css/StyleSheetModal.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div class="dialog">
+
+        <h2 class="dialog__title">UPS, Ocurrio un problema !!</h2>
+        <p class="dialog__content">@ViewBag.Mensaje</p>
+        <button class="dialog__action">Volver &#8594;</button>
     </div>
-</div>
-<script>
-    $('#modalValidacion').modal();
-</script>
+
+    <!-- Incluir jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Script personalizado -->
+    <script>
+        // JS interno para manejar el diálogo
+        function dialog() {
+
+           // Declare variables
+            var dialogBox = $('.dialog'),
+                dialogClose = $('.dialog__close'),
+                dialogTitle = $('.dialog__title'),
+                dialogContent = $('.dialog__content'),
+                dialogAction = $('.dialog__action');
+
+            // Open the dialog (se muestra directamente al cargar la página)
+            dialogBox.addClass('dialog--active');
+
+              dialogAction.on('click', function () {
+                       // Simular la acción de redirección al hacer clic en el enlace
+                        window.location.href = '@Url.Action("Login", "Loggin")';
+              });
+
+
+            // Close the dialog - press escape key // key#27
+            $(document).keyup(function (e) {
+                if (e.keyCode === 27) {
+                   window.location.href = '@Url.Action("Login", "Loggin")';
+                }
+            });
+        }
+        $(dialog);
+    </script>
+</body>
+
+</html>
