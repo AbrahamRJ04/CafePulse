@@ -1,0 +1,260 @@
+﻿@model CafePulse.ModelClass.Usuario;
+@{
+    ViewData["Title"] = "OpenFormNewUser";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="~/css/stylesheetaltausuariologgin.css" rel="stylesheet" />
+    <title>HASH TECHIE OFFICIAL</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        h1 {
+            color: white;
+            /* Color blanco */
+            font-size: 36px;
+            font-family: 'Consolas', monospace;
+            /* Fuente Consolas */
+            text-align: left;
+            margin-left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="form-box">
+            <div class="form-value">
+                @using (Html.BeginForm("OpenFormNewUser", "Loggin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <h1>Registrate</h1>
+                    <br />
+                    <div style="visibility:collapse; display:none;">
+                        <div class="col-md-4 col-12 col-sm-6">
+                            @Html.LabelFor(model => model.IdUsuario)
+                            @Html.TextBoxFor(model => model.IdUsuario, new { @class = "form-control", @id = "txtIdUsuario" })
+                            @Html.ValidationMessageFor(model => model.IdUsuario)
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">
+                            <i class="bi bi-person"></i>
+                        </span>
+                        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", @placeholder = "Nombre", @oninput = "checkForm()", @id = "nombreInput" })
+
+
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">
+                            <i class="bi bi-person"></i>
+                        </span>
+                        @Html.TextBoxFor(model => model.Apellido, new { @class = "form-control", @placeholder = "Apellidos", @oninput = "checkForm()", @id = "LastNameInput" })
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">
+                            <i class="bi bi-calendar-day"></i>
+                        </span>
+                        @Html.TextBoxFor(model => model.FechaNacimiento, new { @class = "form-control", @placeholder = "DD / MM / AAAA", @oninput = "checkForm()", @id = "dateInput", @onblur = "validateDate()" })
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">
+                            <i class="bi bi-gender-ambiguous"></i>
+                        </span>
+
+                        @Html.DropDownListFor(
+                                 model => model.Genero.IdGenero,
+                                 new SelectList(Model.Genero.Generos, "IdGenero", "Nombre"),
+                                 "Selecciona un género",
+                                 new { @class = "form-control", id = "generoInput", @oninput = "checkForm()" }
+                                 )
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">
+                            <i class="bi bi-gender-ambiguous"></i>
+                        </span>
+
+                        @Html.DropDownListFor(
+                                 model => model.Rol.IdRol,
+                                 new SelectList(Model.Rol.Roles, "IdRol", "Nombre"),
+                                 "Selecciona un Rol",
+                                 new { @class = "form-control", id = "rolInput", @oninput = "checkForm()" }
+                                 )
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">
+                            <i class="bi bi-phone"></i>
+                        </span>
+                        @Html.TextBoxFor(model => model.Telefono, new { @class = "form-control", @placeholder = "Telefono", @onblur = "validatePhone()", @oninput = "checkForm()", @id = "telefonoInput" })
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">
+                            <i class="bi bi-envelope"></i>
+                        </span>
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @placeholder = "Email", @id = "emailInput", @onblur = "validateEmail()", @oninput = "checkForm()" })
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">
+                            <i class="bi bi-person-vcard"></i>
+                        </span>
+                        @Html.TextBoxFor(model => model.User, new { @class = "form-control", @placeholder = "Usuario", @id = "usuarioInput", @oninput = "checkForm()" })
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">
+                            <i class="bi bi-radioactive"></i>
+                        </span>
+                        @Html.TextBoxFor(model => model.Pass, new { @class = "form-control", @placeholder = "Contraseña", @id = "contrasenaInput", @oninput = "checkForm()", @type = "password" })
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">
+                            <i class="bi bi-radioactive"></i>
+                        </span>
+                        @Html.TextBoxFor(model => model.ConfirmPass, new { @class = "form-control", @placeholder = "Confirmar Contraseña", @id = "comprobacioncontrasenaInput", @onblur = "validatePasswords()", @oninput = "checkForm()", @type = "password" })
+                    </div>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        @* <button class="btn btn-secondary" type="button" id="submitButton" disabled>Registrar</button> *@
+                        <input type="submit" value="Registrar" class="btn btn-secondary" disabled id="submitButton" />
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Lista de los campos que deseas validar
+        const fields = ['nombreInput', 'LastNameInput'];
+
+        fields.forEach(function (fieldId) {
+            document.getElementById(fieldId).addEventListener('input', function (event) {
+                const regex = /^[A-Za-z\s]*$/;
+                if (!regex.test(event.target.value)) {
+                    event.target.value = event.target.value.slice(0, -1);
+                    alert("Solo se permiten letras en este campo");
+                }
+            });
+        });
+
+        function validateDate() {
+            const dateInput = document.getElementById('dateInput');
+            const regex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
+
+            if (dateInput.value.trim() === '') {
+                return; // Salir si el campo está vacío
+            }
+
+
+            // Verifica si la fecha tiene el formato DD/MM/YYYY
+            if (!regex.test(dateInput.value)) {
+                alert("Por favor ingresa una fecha válida en formato DD/MM/AAAA");
+                dateInput.value = ''; // Limpia el campo si no es válida
+                return;
+            }
+
+            // Si el formato es correcto, valida si la fecha es real
+            const dateParts = dateInput.value.split('/');
+            const day = parseInt(dateParts[0], 10);
+            const month = parseInt(dateParts[1], 10);
+            const year = parseInt(dateParts[2], 10);
+
+            // Crear un objeto Date para validar la fecha real
+            const date = new Date(year, month - 1, day); // month - 1 porque los meses empiezan desde 0 en JavaScript
+
+            if (date.getDate() !== day || date.getMonth() + 1 !== month || date.getFullYear() !== year) {
+                alert("La fecha ingresada no es válida.");
+                dateInput.value = ''; // Limpia el campo si la fecha no es válida
+            }
+        }
+        function validatePhone() {
+            const phoneInput = document.getElementById('telefonoInput');
+
+            // Si el campo está vacío, no hacer nada y salir de la función
+            if (phoneInput.value.trim() === '') {
+                return; // Salir si el campo está vacío
+            }
+
+            // Expresión regular para validar un número de teléfono, permitiendo solo números
+            const regex = /^[0-9]{7,15}$/;
+
+            // Validar si el número tiene entre 7 y 15 dígitos
+            if (!regex.test(phoneInput.value)) {
+                alert("Por favor ingresa un número de teléfono válido (solo números, entre 7 y 15 dígitos).");
+                phoneInput.value = ''; // Limpia el campo si no es válido
+            }
+        }
+        function validateEmail() {
+            const emailInput = document.getElementById('emailInput');
+
+            if (emailInput.value.trim() === '') {
+                return; // Salir si el campo está vacío
+            }
+            // Expresión regular para validar un correo electrónico
+            const regex = /^[a-zA-Z0-9._%+-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+
+            // Validar si el correo tiene el formato correcto
+            if (emailInput.value && !regex.test(emailInput.value)) {
+                alert("Por favor ingresa un correo electrónico válido.");
+                emailInput.value = ''; // Limpia el campo si no es válido
+            }
+        }
+
+        function validatePasswords() {
+            const passwordInput = document.getElementById('contrasenaInput');
+            const confirmPasswordInput = document.getElementById('comprobacioncontrasenaInput');
+
+            // Verificar si ambas contraseñas coinciden
+            if (passwordInput.value !== confirmPasswordInput.value) {
+                alert("Las contraseñas no coinciden. Por favor, verifica.");
+                passwordInput.value = ''; // Limpiar ambos campos
+                confirmPasswordInput.value = '';
+            }
+        }
+
+        function checkForm() {
+            // Obtener todos los campos de entrada
+            const nombreInput = document.getElementById('nombreInput');
+            const lastNameInput = document.getElementById('LastNameInput');
+            const dateInput = document.getElementById('dateInput');
+            const generoInput = document.getElementById('generoInput');
+            const rolInput = document.getElementById('rolInput');
+            const telefonoInput = document.getElementById('telefonoInput');
+            const emailInput = document.getElementById('emailInput');
+            const usuarioInput = document.getElementById('usuarioInput');
+            const contrasenaInput = document.getElementById('contrasenaInput');
+            const comprobacioncontrasenaInput = document.getElementById('comprobacioncontrasenaInput');
+            const submitButton = document.getElementById('submitButton');
+
+            const generoSelected = generoInput.value.trim() !== '' && generoInput.value !== "Selecciona un género";
+
+            // Verificar si todos los campos tienen algún valor
+            if (
+                nombreInput.value.trim() !== '' &&
+                lastNameInput.value.trim() !== '' &&
+                dateInput.value.trim() !== '' &&
+                generoSelected &&
+                rolInput.value.trim() !== '' &&
+                telefonoInput.value.trim() !== '' &&
+                emailInput.value.trim() !== '' &&
+                usuarioInput.value.trim() !== '' &&
+                contrasenaInput.value.trim() !== '' &&
+                comprobacioncontrasenaInput.value.trim() !== ''
+            ) {
+                submitButton.disabled = false; // Habilitar el botón si todos los campos están llenos
+            } else {
+                submitButton.disabled = true; // Deshabilitar el botón si algún campo está vacío
+            }
+        }
+
+    </script>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

@@ -16,6 +16,8 @@ namespace CafePulse.ModelClass
         public string Telefono { get; set; }
         public string Email { get; set; }
         public string User { get; set; }
+        public string Pass { get; set; }
+        public string ConfirmPass { get; set; }
         public List<Object> Usuarios { get; set; }
         
 

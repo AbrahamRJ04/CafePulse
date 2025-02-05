@@ -77,5 +77,45 @@ namespace CafePulse.BusinessClass
             return response;
         }
 
+        public static CafePulse.ModelClass.Result InsertNewUser(ModelClass.Usuario requestUser)
+        {
+            var result = new ModelClass.Result();
+
+            try
+            {
+                using (var context = new DataBaseClass.Models.CoffeeDevBdContext())
+                {
+                    var query = context.Database.ExecuteSqlRaw(
+                        "EXEC USP_InsertNewUser @Nombre, @Apellido, @FechaNacimiento, @IdGenero, @IdRol, @Telefono, @Email, @Usuario, @Contrasena",
+                        new SqlParameter("@Nombre", requestUser.Nombre),
+                        new SqlParameter("@Apellido", requestUser.Apellido),
+                        new SqlParameter("@FechaNacimiento", requestUser.FechaNacimiento),
+                        new SqlParameter("@IdGenero", requestUser.Genero.IdGenero),
+                        new SqlParameter("@IdRol", requestUser.Rol.IdRol),
+                        new SqlParameter("@Telefono", requestUser.Telefono),
+                        new SqlParameter("@Email", requestUser.Email),
+                        new SqlParameter("@Usuario", requestUser.User),
+                        new SqlParameter("@Contrasena", requestUser.Pass) 
+                    );
+
+                    result.Success = query > 0;
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                result.Success = false;
+                result.ErrorMessage = "Error al insertar el usuario en la base de datos.";
+                result.exception = sqlEx;
+            }
+            catch (Exception ex)
+            {
+                result.Success = false;
+                result.ErrorMessage = "Ocurrió un error inesperado al registrar el usuario.";
+                result.exception = ex;
+            }
+
+            return result;
+        }
+
     }
 }
