@@ -1,0 +1,54 @@
+﻿@model CafePulse.ModelClass.Opciones;
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Imágenes</title>
+    <link href="~/css/styleMenuPrincipal.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div class="wrapper-images">
+        <div class="images-line">
+            <div class="line large" style="background-image: url('/Pictures/PicturesMenu/FirstPicture.jpg');"></div>
+            <div class="line" style="background-image:url('/Pictures/PicturesMenu/SecondPicture.jpg')"></div>
+            <div class="line" style="background-image:url('/Pictures/PicturesMenu/ThirdPicture.jpg')"></div>
+            <div class="line large" style="background-image: url('/Pictures/PicturesMenu/FirstPicture.jpg');"></div>
+            <div class="line" style="background-image:url('/Pictures/PicturesMenu/SecondPicture.jpg')"></div>
+            <div class="line" style="background-image:url('/Pictures/PicturesMenu/ThirdPicture.jpg')"></div>
+        </div>
+        <div class="images-line">
+            <div class="line" style="background-image:url('/Pictures/PicturesMenu/FourPicture.jpg')"></div>
+            <div class="line large" style="background-image: url('/Pictures/PicturesMenu/FivePicture.jpg');"></div>
+            <div class="line" style="background-image:url('/Pictures/PicturesMenu/SixPicture.jpg')"></div>
+            <div class="line" style="background-image:url('/Pictures/PicturesMenu/FourPicture.jpg')"></div>
+            <div class="line large" style="background-image: url('/Pictures/PicturesMenu/FivePicture.jpg');"></div>
+            <div class="line" style="background-image:url('/Pictures/PicturesMenu/SixPicture.jpg')"></div>
+        </div>
+        <div class="images-line">
+            <div class="line" style="background-image:url('/Pictures/PicturesMenu/SixPicture.jpg')"></div>
+            <div class="line" style="background-image:url('/Pictures/PicturesMenu/SecondPicture.jpg')"></div>
+            <div class="line large" style="background-image: url('/Pictures/PicturesMenu/FirstPicture.jpg');"></div>
+            <div class="line" style="background-image:url('/Pictures/PicturesMenu/FourPicture.jpg')"></div>
+            <div class="line" style="background-image:url('/Pictures/PicturesMenu/ThirdPicture.jpg')"></div>
+            <div class="line large" style="background-image: url('/Pictures/PicturesMenu/FivePicture.jpg');"></div>
+        </div>
+    </div>
+    <div class="container">
+        <nav class="menu">
+            @foreach (var item in Model.MenuConfigurado)
+            {
+                <a href="@Url.Action("SeleccionMenu", "Menu", new { seleccion = item, rol = Model.Rol })">@item</a>
+            }
+        </nav>
+    </div>
+
+</body>
+
+</html>

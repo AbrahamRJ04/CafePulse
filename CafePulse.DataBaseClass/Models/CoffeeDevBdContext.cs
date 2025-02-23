@@ -158,9 +158,9 @@ public partial class CoffeeDevBdContext : DbContext
             entity.ToTable("Menu");
 
             entity.Property(e => e.Idproductomenu).HasColumnName("IDPRODUCTOMENU");
-            entity.Property(e => e.Cantidad)
+            entity.Property(e => e.Precio)
                 .HasColumnType("decimal(18, 0)")
-                .HasColumnName("CANTIDAD");
+                .HasColumnName("PRECIO");
             entity.Property(e => e.NombreProducto)
                 .HasMaxLength(50)
                 .IsUnicode(false)

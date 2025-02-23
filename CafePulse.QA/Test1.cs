@@ -43,9 +43,16 @@
             use.Telefono = "5534681234";
             use.Email = "juanCz@BininixD.com";
             use.User = "caz002";
-            use.Pass = "Welcome2001";
+            use.Pass = "z   ";
 
             CafePulse.ModelClass.Result response = CafePulse.BusinessClass.Usuario.InsertNewUser(use);
+            Assert.IsTrue(response.Success);
+        }
+
+        [TestMethod]
+        public void testGetMenu()
+        {
+            CafePulse.ModelClass.Result response = CafePulse.BusinessClass.Menu.GetAll();
             Assert.IsTrue(response.Success);
         }
     }

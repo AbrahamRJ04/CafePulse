@@ -1,6 +1,7 @@
 ﻿using CafePulse.ModelClass;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Drawing;
 
 namespace CafePulse.FrontClass.Controllers
 {
@@ -26,15 +27,15 @@ namespace CafePulse.FrontClass.Controllers
             {
                 ModelClass.Usuario usuario = new ModelClass.Usuario();
                 usuario = (ModelClass.Usuario)response.Object;
-
                 if (usuario != null)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("IntoMenu", "Menu", new { IdRol = usuario.Rol.IdRol });
                 }
                 else
                 {
                     ViewBag.Mensaje = "El usuario o Contraseña ingresados no son validos o no existen";
                 }
+
             }
             else
             {
