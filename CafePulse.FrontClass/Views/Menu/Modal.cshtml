@@ -1,0 +1,61 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dialog Example</title>
+    <!-- Referencia al archivo CSS externo -->
+    <link href="c:\proeyctos temporales\cafeteria\code\cafepulse\cafepulse.frontclass\wwwroot\css\StyleSheetModal.css" rel="stylesheet" />
+    <link href="~/css/StyleSheetModal.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div class="dialog">
+
+        @* <h2 class="dialog__title">UPS, Ocurrio un problema !!</h2> *@
+        <h2>@(string.IsNullOrEmpty(ViewBag.Titulo) ? "UPS, Ocurrió un problema !!" : ViewBag.Titulo)</h2>
+        <p class="dialog__content">@ViewBag.Mensaje</p>
+        <button class="dialog__action">Volver &#8594;</button>
+    </div>
+
+    <!-- Incluir jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Script personalizado -->
+    <script>
+        // JS interno para manejar el diálogo
+        function dialog() {
+
+           // Declare variables
+            var dialogBox = $('.dialog'),
+                dialogClose = $('.dialog__close'),
+                dialogTitle = $('.dialog__title'),
+                dialogContent = $('.dialog__content'),
+                dialogAction = $('.dialog__action');
+
+            // Open the dialog (se muestra directamente al cargar la página)
+            dialogBox.addClass('dialog--active');
+
+              dialogAction.on('click', function () {
+                       // Simular la acción de redirección al hacer clic en el enlace
+                        window.location.href = '@Url.Action("Login", "Loggin")';
+              });
+
+
+            // Close the dialog - press escape key // key#27
+            $(document).keyup(function (e) {
+                if (e.keyCode === 27) {
+                   window.location.href = '@Url.Action("Login", "Loggin")';
+                }
+            });
+        }
+        $(dialog);
+    </script>
+</body>
+
+</html>
